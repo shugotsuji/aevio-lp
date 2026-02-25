@@ -583,6 +583,7 @@ function CTA() {
   const [email, setEmail] = useState("");
   const [url, setUrl] = useState("");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const inputStyle = {
     fontFamily: "'Sora', 'Noto Sans JP', sans-serif",
@@ -592,6 +593,28 @@ function CTA() {
     color: "#fff", outline: "none",
     transition: "border-color 0.25s ease",
   };
+
+  async function handleSubmit() {
+    if (!url || !email) return;
+    setSending(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "4434d0c4-c9ad-46f8-a0c1-5deafff00538",
+          subject: "【Aevio】新規無料診断申込",
+          from_name: "Aevio LP",
+          website_url: url,
+          email: email,
+        }),
+      });
+      if (res.ok) setSent(true);
+    } catch (e) {
+      console.error(e);
+    }
+    setSending(false);
+  }
 
   return (
     <section id="contact" style={{
@@ -644,21 +667,24 @@ function CTA() {
                   onBlur={e => e.target.style.borderBottomColor = "rgba(255,255,255,0.15)"}
                 />
                 <button
-                  onClick={() => setSent(true)}
+                  onClick={handleSubmit}
+                  disabled={sending}
                   style={{
                     fontFamily: "'Sora', 'Noto Sans JP', sans-serif",
                     fontSize: 15, fontWeight: 600,
                     padding: "16px 40px",
-                    background: "#6EE7A0", color: "#17181C",
+                    background: sending ? "#555" : "#6EE7A0",
+                    color: "#17181C",
                     border: "none", borderRadius: 100,
-                    cursor: "pointer", marginTop: 8,
+                    cursor: sending ? "default" : "pointer",
+                    marginTop: 8,
                     alignSelf: "flex-start",
                     transition: "opacity 0.25s ease",
                   }}
-                  onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
+                  onMouseEnter={e => { if (!sending) e.currentTarget.style.opacity = "0.85"; }}
                   onMouseLeave={e => e.currentTarget.style.opacity = "1"}
                 >
-                  無料診断を申し込む
+                  {sending ? "送信中..." : "無料診断を申し込む"}
                 </button>
               </div>
             ) : (
