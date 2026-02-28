@@ -13,21 +13,25 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata = {
-  title: 'Aevio | AI検索を、エージェントが最適化する',
-  description: 'ChatGPTからLINE AIまで、日本のAI検索をエージェントが自動で最適化するAEOプラットフォーム',
+  title: "Aevio — Agents to optimize your marketing in AI Search for Japan.",
+  description:
+    "AevioのAIエージェントが、ChatGPTからLINE AIまで日本のAI検索を一括で監視・分析・最適化。日本初のAEOプラットフォーム。",
   openGraph: {
-    title: 'Aevio | Agents to optimize your marketing in AI Search for Japan',
-    description: 'ChatGPTからLINE AIまで、日本のAI検索をエージェントが自動で最適化するAEOプラットフォーム',
-    url: 'https://aevio.ai',
-    siteName: 'Aevio',
-    images: [{ url: 'https://aevio.ai/og.png', width: 1200, height: 630 }],
-    type: 'website',
+    title: "Aevio — Agents to optimize your marketing in AI Search for Japan.",
+    description:
+      "ChatGPTからLINE AIまで、日本のAI検索をエージェントが自動で最適化するAEOプラットフォーム。",
+    url: "https://aevio.ai",
+    siteName: "Aevio",
+    images: [{ url: "https://aevio.ai/og.png", width: 1200, height: 630 }],
+    locale: "ja_JP",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Aevio | Agents to optimize your marketing in AI Search for Japan',
-    description: 'AI検索を、エージェントが最適化する。',
-    images: ['https://aevio.ai/og.png'],
+    card: "summary_large_image",
+    title: "Aevio — Agents to optimize your marketing in AI Search for Japan.",
+    description:
+      "ChatGPTからLINE AIまで、日本のAI検索をエージェントが自動で最適化。",
+    images: ["https://aevio.ai/og.png"],
   },
 };
 
